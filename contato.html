@@ -1,0 +1,82 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ifsp</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("header.html");
+    });
+
+    $(function () {
+      $("#nav-footer").load("footer.html");
+    });
+
+    const handlePhone = (event) => {
+      let input = event.target
+      input.value = phoneMask(input.value)
+    }
+
+    const phoneMask = (value) => {
+      if (!value) return ""
+      value = value.replace(/\D/g, '')
+      value = value.replace(/(\d{2})(\d)/, "($1) $2")
+      value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+      return value
+    }
+  </script>
+</head>
+
+<body>
+
+  <div id="nav-placeholder">
+  </div>
+
+  <h1>Mande uma mensagem</h1>
+
+  <form>
+    <li>
+      <label for="nome">Nome</label>
+      <input required name="nome" id="nome">
+    </li>
+    <li>
+      <label for="email">Email</label>
+      <input required type="email" name="email" id="email">
+    </li>
+    <li>
+      <label for="telefone">Telefone</label>
+      <input required maxlength="15" onkeyup="handlePhone(event)" name="telefone" id="telefone">(11) 99999-9999
+    </li>
+    <li>
+      <label for="assunto">Assunto</label>
+      <select required>
+        <option value="">-- Selecione --</option>
+        <option value="1">Reclamação</option>
+        <option value="2">Sugestão</option>
+      </select>
+    </li>
+    <li>
+      <label for="mensagem">Mensagem</label>
+      <textarea required id="mensagem" name="mensagem"></textarea>
+    </li>
+    <li>
+      <fieldset>
+        <legend>Opções de Resposta</legend>
+
+        <input required type="radio" id="radio-email" name="opcoes-resposta">
+        <label for="radio-email">Email</label>
+
+        <input type="radio" id="radio-telefone" name="opcoes-resposta">
+        <label for="radio-telefone">Telefone</label>
+      </fieldset>
+    </li>
+    <li>
+      <input class="botao-verde" type="submit">
+    </li>
+  </form>
+
+  <div id="nav-footer">
+  </div>
+
+</body>

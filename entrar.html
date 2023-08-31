@@ -1,0 +1,39 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ifsp</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("header.html");
+    });
+    
+    $(function () {
+      $("#nav-footer").load("footer.html");
+    });
+  </script>
+</head>
+
+<body>
+
+  <div id="nav-placeholder">
+  </div>
+
+  <h1>Entrar</h1>
+
+  <form>
+    <label style="margin-bottom: 15px;" for="usuario">Usuário</label>
+    <input style="margin-bottom: 15px;" required id="usuario" name="usuario">
+    <br>
+    <label style="margin-bottom: 15px;" for="senha">Senha</label>
+    <input style="margin-bottom: 15px;" required type="password" id="senha" name="senha">
+    <br>
+
+    <input class="botao-verde" style="margin-right: 20px;" type="submit"><a href="#">Esqueci a senha</a>
+  </form>
+
+  <div id="nav-footer">
+  </div>
+
+</body>

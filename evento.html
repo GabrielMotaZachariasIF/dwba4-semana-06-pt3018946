@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ifsp</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("header.html");
+    });
+
+    $(function () {
+      $("#nav-footer").load("footer.html");
+    });
+
+    const handlePhone = (event) => {
+      let input = event.target
+      input.value = phoneMask(input.value)
+    }
+
+    const phoneMask = (value) => {
+      if (!value) return ""
+      value = value.replace(/\D/g, '')
+      value = value.replace(/(\d{2})(\d)/, "($1) $2")
+      value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+      return value
+    }
+  </script>
+  <style type="text/css">
+    .distanciar {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="nav-placeholder">
+  </div>
+
+  <form>
+    <fieldset>
+      <label for="evento">Usuário</label>
+      <select name="evento" id="evento" required>
+        <option value="">-- Selecione --</option>
+        <option value="1">Voe sem asas</option>
+        <option value="2">Festa junina</option>
+        <option value="3">Semana da tecnologia</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Informações de Acesso</legend>
+
+      <label class="distanciar" for="usuario">Usuário</label>
+      <input class="distanciar" name="usuario" required id="usuario">
+      <br>
+      <label class="distanciar" for="senha">Senha</label>
+      <input type="password" class="distanciar" name="senha" required id="senha">
+      <br>
+      <label class="distanciar" for="confirma-senha">Confirme a senha</label>
+      <input class="distanciar" name="confirma-senha" required id="confirma-senha">
+    </fieldset>
+
+    <fieldset>
+      <legend>Informações Pessoais</legend>
+
+      <label class="distanciar" for="nome-completo">Nome completo</label>
+      <input class="distanciar" id="nome-completo" name="nome-completo" required>
+      <br>
+      <label class="distanciar" for="email">Email</label>
+      <input class="distanciar" type="email" id="email" name="email" required>
+      <br>
+      <label class="distanciar" for="celular">Celular</label>
+      <input class="distanciar" maxlength="15" onkeyup="handlePhone(event)" id="celular" name="celular" required>(99)
+      99999-9999
+
+      <fieldset>
+        <legend>Sexo</legend>
+
+        <input required type="radio" id="masc" name="sexo">
+        <label for="masc">Masculino</label>
+
+        <input type="radio" id="fem" name="sexo">
+        <label for="fem">Feminino</label>
+
+      </fieldset>
+
+      <label class="distanciar" for="data-nascimento">Data de Nascimento</label>
+      <input class="distanciar" required type="date" id="data-nascimento" name="data-nascimento">
+      <br>
+      <label class="distanciar" for="cor-favorita">Cor favorita</label>
+      <input class="distanciar" required type="color" id="cor-favorita" name="cor-favorita">
+      <br>
+      <label class="distanciar" for="perfil-github">Perfil no Github</label>
+      <input class="distanciar" required type="url" id="perfil-github" name="perfil-github">
+    </fieldset>
+    <br>
+
+    <input class="botao-verde" type="submit">
+    <input class="botao-verde" type="reset">
+  </form>
+
+  <div id="nav-footer">
+  </div>
+</body>
+
+</html>
